@@ -35,6 +35,6 @@ int main(int argc, char const *argv[]){
             printf("[%d, ", j);
         printf("%d, ", j);
         if(j==i-1)
-            printf("%d", j);
+            printf("%d]", j);
     }
 }
