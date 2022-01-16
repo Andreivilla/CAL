@@ -1,12 +1,11 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Util {
-    /*Algortimo de euclides estendido baseado na versão disponivel no artigo da wikipedia disponivel em:
+public class MDC {
+    /*Algortimo de euclides estendido baseado na versão de seu artigo na wikipedia disponivel em:
     https://pt.wikipedia.org/wiki/Algoritmo_de_Euclides_estendido */
-    public ArrayList<BigInteger> mdcEuclidesEstendido(BigInteger a, BigInteger b){
-        ArrayList<BigInteger> retorno = new ArrayList<BigInteger>();
+    public ArrayList<BigInteger> mdc(BigInteger a, BigInteger b){
+        ArrayList<BigInteger> retorno = new ArrayList<>();
 
         BigInteger u = BigInteger.valueOf(1);
         BigInteger v = BigInteger.valueOf(0);
@@ -17,7 +16,6 @@ public class Util {
 
         while(!b.equals(BigInteger.valueOf(0))){
             q = a.divide(b);
-            System.out.println(a + "/" + b + "=" + q);
             rs = a;
             us = u;
             vs = v;
@@ -35,9 +33,9 @@ public class Util {
         return retorno;//[maior divisor comum, coeficidente maior numero, coeficiente menor numero]
     }
 
-    public BigInteger mdcAKS(BigInteger a, BigInteger b){
+    public Boolean primoAKS(BigInteger a){
+        BigInteger b = BigInteger.valueOf(1);
 
-        return a;
+        return true;
     }
-
 }
