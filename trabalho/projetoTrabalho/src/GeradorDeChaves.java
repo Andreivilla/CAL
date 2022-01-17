@@ -4,14 +4,84 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GeradorDeChaves {
-    private Random random = new Random(System.currentTimeMillis());
+    private Random random = new Random();
     private MDC mdc = new MDC();
-    private int TAMANHO_BIGINT;//tamanho em bits dos numeros primos
+    private int TAMANHO_BIGINT;
+    private MillerRabin millerRabin = new MillerRabin();
+    private BigInteger p, q, n, phi, e, d;
 
     public GeradorDeChaves(int n){
-        TAMANHO_BIGINT = n;
+        this.TAMANHO_BIGINT = n;
     }
 
+    public void gerarChaves(){
+        //define 2 provaveis primos aleatorios de tamanho TAMANHO_BIGINT
+        this.p = primoBigInteger();
+        this.q = primoBigInteger();
+        this.n = p.multiply(q);
+        this.phi = define_phi(p, q);
+        do {
+            this.e = new BigInteger(phi.bitLength(), random);
+        }while (!e.gcd(phi).equals(BigInteger.ONE) || e.compareTo(BigInteger.ONE) <= 0 || e.compareTo(phi) >= 0);
+        this.d  = e.modInverse(phi);
+    }
+
+    private BigInteger define_phi(BigInteger p, BigInteger q){
+        return this.p.subtract(BigInteger.valueOf(1)).multiply(this.q.subtract(BigInteger.ONE));
+    }
+
+    public BigInteger[] cifrando(String mensagem, BigInteger n, BigInteger e){
+        char[] msg = mensagem.toCharArray();
+        BigInteger[] msgCifrada = new BigInteger[mensagem.length()];
+        for(int i=0; i<mensagem.length(); i++){
+            msgCifrada[i] = BigInteger.valueOf((int) msg[i]).modPow(e, n);
+        }
+        return msgCifrada;
+    }
+
+    public String decifrando(BigInteger[] mensagem, BigInteger n, BigInteger d){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i=0; i<mensagem.length; i++){
+            stringBuilder.append((char) mensagem[i].modPow(d, n).intValue());
+        }
+        return stringBuilder.toString();
+    }
+
+    private BigInteger primoBigInteger(){//gera um provavel primo do tipo NigInteger
+        while (true){
+            BigInteger primo = new BigInteger(TAMANHO_BIGINT, random);
+            if(millerRabin.isProbablePrime(primo, 100)){
+                return primo;
+            }
+        }
+
+    }
+
+    //getters
+    public BigInteger[] getChavePublica(){
+        BigInteger[] chave = new BigInteger[2];
+        chave[0] = getN();
+        chave[1] = getE();
+        return chave;
+    }
+
+    public BigInteger getChavePrivada(){
+        return getD();
+    }
+
+    public BigInteger getD() {
+        return d;
+    }
+
+    public BigInteger getE() {
+        return e;
+    }
+
+    public BigInteger getN() {
+        return n;
+    }
+
+    /*
     private BigInteger bigN(BigInteger n){
         BigInteger r = new BigInteger(TAMANHO_BIGINT, random);
         while (r.compareTo(n) < 1){
@@ -59,7 +129,7 @@ public class GeradorDeChaves {
             d.add(BigInteger.valueOf(1));
         }
         return d;
-    }
+    }*/
 
     //cifra
     /*public ArrayList<BigInteger> cifra(String mensagem, BigInteger n, BigInteger d){
@@ -69,7 +139,7 @@ public class GeradorDeChaves {
 
         for(int i=0; i<mensagem.length(); i++){
             BigInteger k = BigInteger.valueOf(mensagemChar[i]);
-            k.modPow(e);
+
         }
     }*/
 
