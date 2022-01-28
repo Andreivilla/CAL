@@ -1,12 +1,15 @@
+import java.io.File;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Main {
     public static void main(String[] args) {
-        GeradorDeChaves geradorDeChaves = new GeradorDeChaves(1024);
-        geradorDeChaves.gerarChaves();
+
+        /*GeradorDeChaves geradorDeChaves = new GeradorDeChaves(10);
+
 
         BigInteger chavePublica[] = geradorDeChaves.getChavePublica();
         BigInteger chavePrivada = geradorDeChaves.getChavePrivada();
@@ -14,7 +17,9 @@ public class Main {
         System.out.println("Chave Publica: ");
         System.out.println("[" + chavePublica[0] + ", " + chavePublica[1] + "]");
         System.out.println("Chave privada: ");
-        System.out.println(chavePrivada);
+        System.out.println(chavePrivada);*/
+
+        //---------------
 
         /*BigInteger chavePublica[] = new BigInteger[2];
         chavePublica[0] = new BigInteger("13431043770310227308780573336628212913694060823782271897818897753943793116941623828091870950047692605886294476501498991773742373030237888532734957759253650162285154814331264519081310428357404946737684740272735994797059369175788066728861760767648113053167468297483016975627937547826477929655930612724532499327768009881883638924283944114703535751191574316854505862334246896762237689359895643310541788869188013702583941992436337531580042312094421682806017825232034672136898625956648565475857108472899576367228294165434504318703035129510705807631624851527428485819791767201052128576714091576970235880593229166628824116617");
@@ -22,14 +27,15 @@ public class Main {
         BigInteger chavePrivada = new BigInteger("5670986516863586781188902311987282678517541544297923148890735183480360051896544817072993351240236508556389910993521005921845866696864625758207634377717102544533406029493067763327670724078925659611370442121295907843897477741468387727135488440242369523579216851773734248477110790779511297059017828002699403887383610978809695238598904151249519135875909037663414353670269027911756955204671728341062615040060091944646379951693537217974418773039064460036083052623969828813253354886263767395323655681650407685331604734279587794978161972125267716807425669551383524419391321776794814283996336946447592348288693982489760478941");
         */
 
+        //-------------
 
-        String mensagem = "Andrei";
+        /*String mensagem = "Andrei";
 
         BigInteger[] msgCifrada = geradorDeChaves.cifrando(mensagem, chavePublica[0], chavePublica[1]);
 
-        System.out.println(geradorDeChaves.decifrando(msgCifrada, chavePublica[0], chavePrivada));
+        System.out.println(geradorDeChaves.decifrando(msgCifrada, chavePublica[0], chavePrivada));*/
 
-
+        File arquivo = new File("menssagemString.txt");
 
 
     }

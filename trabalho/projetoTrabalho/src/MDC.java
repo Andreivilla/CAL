@@ -33,9 +33,8 @@ public class MDC {
         return retorno;//[maior divisor comum, coeficidente maior numero, coeficiente menor numero]
     }
 
-    public Boolean primoAKS(BigInteger a){
-        BigInteger b = BigInteger.valueOf(1);
-
-        return true;
+    public BigInteger mdcSimples(BigInteger a, BigInteger b){//para simplificar o retorno e não alocar um array
+        ArrayList resultados = mdc(a, b);
+        return (BigInteger) resultados.get(0);//BigInteger.valueOf(1);
     }
 }
