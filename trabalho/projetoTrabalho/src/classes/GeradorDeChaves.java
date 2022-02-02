@@ -1,6 +1,7 @@
 package classes;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GeradorDeChaves {
@@ -12,15 +13,14 @@ public class GeradorDeChaves {
 
     //construtores
     //construtor onde n define o numero de bits e tamnaho dos intieros
-    public GeradorDeChaves(int n){
-        this.TAMANHO_BIGINT = n;
+    public GeradorDeChaves(int precisao){
+        this.TAMANHO_BIGINT = precisao;
         gerarChaves();
     }
     //construtor com chaves
     public GeradorDeChaves(BigInteger n, BigInteger e, BigInteger d){
         this.n = n;
     }
-
 
     public void gerarChaves(){
         //define 2 provaveis primos aleatorios de tamanho TAMANHO_BIGINT
@@ -89,6 +89,7 @@ public class GeradorDeChaves {
         return chave;
     }
 
+
     public BigInteger getChavePrivada(){
         return getD();
     }
@@ -105,4 +106,12 @@ public class GeradorDeChaves {
         return n;
     }
 
+    //apenas para verificação da fatoração de n
+
+    public BigInteger getQ() {
+        return q;
+    }
+    public BigInteger getP() {
+        return p;
+    }
 }

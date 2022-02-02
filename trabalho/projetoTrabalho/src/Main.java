@@ -1,6 +1,6 @@
-import classes.ManipuladorArquivos;
+import classes.GeradorDeChaves;
 
-import java.io.*;
+import java.io.IOException;
 import java.math.BigInteger;
 
 
@@ -70,6 +70,17 @@ public class Main {
 
         System.out.println("--------------------");
         System.out.println(geradorDeChaves.decifrando(msgCifrada, chavePublica[0], chavePrivada));*/
+
+
+        /*
+        GeradorDeChaves geradorDeChaves = new GeradorDeChaves(10);
+        BigInteger[] chavepublica = geradorDeChaves.getChavePublica();
+
+        System.out.println("chave publica: " + chavepublica[0]);
+        System.out.println("p: " + geradorDeChaves.getP() + "   q: " + geradorDeChaves.getQ());
+        geradorDeChaves.fatoracaoPQ(chavepublica[0]);
+        */
+
     }
 
 }
