@@ -1,15 +1,15 @@
-import java.io.File;
+import classes.ManipuladorArquivos;
+
+import java.io.*;
 import java.math.BigInteger;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Random;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        /*GeradorDeChaves geradorDeChaves = new GeradorDeChaves(10);
 
+
+        /*classes.GeradorDeChaves geradorDeChaves = new classes.GeradorDeChaves(10);
 
         BigInteger chavePublica[] = geradorDeChaves.getChavePublica();
         BigInteger chavePrivada = geradorDeChaves.getChavePrivada();
@@ -35,9 +35,41 @@ public class Main {
 
         System.out.println(geradorDeChaves.decifrando(msgCifrada, chavePublica[0], chavePrivada));*/
 
-        File arquivo = new File("menssagemString.txt");
 
+        //ler com scanner
+        /*Scanner sc;
+        try {
+            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagemDecifrada.txt"));
+        } catch (FileNotFoundException e) {
+            sc = new Scanner(System.in);
+        }
+        BigInteger a = new BigInteger(sc.nextLine());
+        System.out.println(a);*/
+        //    System.out.println(sc.nextLine());
 
+        //escrever
+        /*OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagemCifrada.txt"); // nome do arquivo que será escrito
+        Writer wr = new OutputStreamWriter(os); // criação de um escritor
+        BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
+
+        br.write("Vamos escrever nesse novo arquivo em Java! que legal hahaha!!!");
+        br.newLine();
+        br.newLine();
+        br.write("Vamos escrever outra linha aqui embaixo hahaha!!!");
+        br.close();*/
+
+        /*System.out.println("-------------------------------------");
+        ManipuladorArquivos manipuladorArquivos = new ManipuladorArquivos();
+        manipuladorArquivos.salvarCifrada(msgCifrada);
+        manipuladorArquivos.lerCifrada();
+
+        BigInteger[] teste = manipuladorArquivos.lerCifrada();
+
+        for(int i=0; i<teste.length; i++)
+            System.out.println(teste[i]);
+
+        System.out.println("--------------------");
+        System.out.println(geradorDeChaves.decifrando(msgCifrada, chavePublica[0], chavePrivada));*/
     }
 
 }

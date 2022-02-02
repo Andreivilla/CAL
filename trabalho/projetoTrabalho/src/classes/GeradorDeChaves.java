@@ -1,6 +1,6 @@
+package classes;
+
 import java.math.BigInteger;
-import java.security.PublicKey;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GeradorDeChaves {
