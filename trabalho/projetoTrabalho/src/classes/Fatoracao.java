@@ -3,7 +3,7 @@ package classes;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public class fatoracao {
+public class Fatoracao {
     public BigInteger[] fatoracaoPQ(BigInteger n){
         ArrayList<BigInteger> fatores = new ArrayList<>();
         fatores.add(BigInteger.valueOf(2));
