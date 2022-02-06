@@ -1,10 +1,9 @@
 package classes;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Random;
 
-public class GeradorDeChaves {
+public class RSA {
     private Random random = new Random();
     private MDC mdc = new MDC();
     private int TAMANHO_BIGINT;
@@ -13,13 +12,15 @@ public class GeradorDeChaves {
 
     //construtores
     //construtor onde n define o numero de bits e tamnaho dos intieros
-    public GeradorDeChaves(int precisao){
+    public RSA(int precisao){
         this.TAMANHO_BIGINT = precisao;
         gerarChaves();
     }
     //construtor com chaves
-    public GeradorDeChaves(BigInteger n, BigInteger e, BigInteger d){
-        this.n = n;
+    public RSA(BigInteger[] chavePublica, BigInteger chavePrivada){
+        this.n = chavePublica[0];
+        this.e = chavePublica[1];
+        this.d = chavePrivada;
     }
 
     public void gerarChaves(){
@@ -63,7 +64,6 @@ public class GeradorDeChaves {
     }
 
     private BigInteger primoBigInteger(){//gera um provavel primo do tipo BigInteger
-
         while (true){
             BigInteger primo = new BigInteger(TAMANHO_BIGINT, random);
             if(millerRabin.isProbablePrime(primo, 100)){
@@ -84,34 +84,14 @@ public class GeradorDeChaves {
     //getters
     public BigInteger[] getChavePublica(){
         BigInteger[] chave = new BigInteger[2];
-        chave[0] = getN();
-        chave[1] = getE();
+        chave[0] = n;
+        chave[1] = e;
         return chave;
     }
 
-
     public BigInteger getChavePrivada(){
-        return getD();
-    }
-
-    public BigInteger getD() {
         return d;
     }
 
-    public BigInteger getE() {
-        return e;
-    }
 
-    public BigInteger getN() {
-        return n;
-    }
-
-    //apenas para verificação da fatoração de n
-
-    public BigInteger getQ() {
-        return q;
-    }
-    public BigInteger getP() {
-        return p;
-    }
 }

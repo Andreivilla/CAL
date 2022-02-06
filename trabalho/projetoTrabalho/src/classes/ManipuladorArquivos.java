@@ -7,21 +7,57 @@ import java.util.Scanner;
 
 public class ManipuladorArquivos {
     public void salvarCifrada(BigInteger[] caracteres) throws IOException {
-        OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagemCifrada.txt"); // nome do arquivo que será escrito
-        Writer wr = new OutputStreamWriter(os); // criação de um escritor
-        BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
+        try {
+            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"); // nome do arquivo que será escrito
+            Writer wr = new OutputStreamWriter(os); // criação de um escritor
+            BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
 
-
-        for(int i=0; i< caracteres.length; i++) {
-            br.write(String.valueOf(caracteres[i]));
-            br.newLine();
+            for(int i=0; i< caracteres.length; i++) {
+                br.write(String.valueOf(caracteres[i]));
+                br.newLine();
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        br.close();
+
     }
+
+    public void salvarDecifrada(String mensagem){
+        try {
+            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"); // nome do arquivo que será escrito
+            Writer wr = new OutputStreamWriter(os); // criação de um escritor
+            BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
+
+            br.write(mensagem);
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String lerDecifrada(){
+        Scanner sc;
+        try {
+            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"));
+        } catch (FileNotFoundException e) {
+            sc = new Scanner(System.in);
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while(sc.hasNext()){
+
+            stringBuilder.append(sc.nextLine());
+
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
     public BigInteger[] lerCifrada(){
         Scanner sc;
         try {
-            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagemCifrada.txt"));
+            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"));
         } catch (FileNotFoundException e) {
             sc = new Scanner(System.in);
         }
