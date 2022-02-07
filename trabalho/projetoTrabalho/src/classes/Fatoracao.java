@@ -1,41 +1,23 @@
 package classes;
 
+import javax.swing.text.StyledEditorKit;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Fatoracao {
     public BigInteger[] fatoracaoPQ(BigInteger n){
-        ArrayList<BigInteger> fatores = new ArrayList<>();
-        fatores.add(BigInteger.valueOf(2));
-        BigInteger[] retorno = new BigInteger[2];
-
-        //loop identifica todos os valores primos que dividem o fator n
-        BigInteger i = new BigInteger("2");
-        while(i.compareTo(n) < 0){
-            if(proxPrimo(fatores, i)){
-                fatores.add(i);
+        BigInteger[] fatores = new BigInteger[2];
+        int nFator=0;
+        BigInteger fator = new BigInteger("2");
+        while (true){
+            System.out.println(fator);
+            if(n.mod(fator).equals(BigInteger.valueOf(0))){
+                fatores[nFator] = fator;
+                nFator++;
+                if(nFator == 2)
+                    return fatores;
             }
-            i = i.add(BigInteger.ONE);
+            fator = fator.nextProbablePrime();
         }
-
-        //testa a multiplicação p e q
-        for(BigInteger p : fatores){
-            for(BigInteger q : fatores){
-                if(!p.equals(q) && p.multiply(q).equals(n)){
-                    retorno[0] = p;
-                    retorno[1] = q;
-                    return retorno;
-                }
-            }
-        }
-        return retorno;
-    }
-
-    private boolean proxPrimo(ArrayList<BigInteger> primos, BigInteger testar){
-        for(BigInteger primo : primos) {
-            if(testar.mod(primo).equals(BigInteger.valueOf(0)))
-                return false;
-        }
-        return true;
     }
 }

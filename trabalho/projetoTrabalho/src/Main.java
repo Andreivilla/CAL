@@ -5,6 +5,7 @@ import classes.ManipuladorArquivos;
 import classes.RSA;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,12 +27,12 @@ public class Main {
         long tempoInicial = 0;
         long tempoFinal = 0;
 
-        for(int i=64;  i < 1024; i+=64){
+        /*for(int i=10;  i <= 30; i+=10){
             //gerar chaves
-            tempoInicial = System.currentTimeMillis();
+            //tempoInicial = System.currentTimeMillis();
             RSA rsa = new RSA(i);
-            tempoFinal = System.currentTimeMillis();
-            geracaoDeChaves.add((float) ((tempoFinal - tempoInicial) / 1000d));
+            //tempoFinal = System.currentTimeMillis();
+            //geracaoDeChaves.add((float) ((tempoFinal - tempoInicial) / 1000d));
 
             Cripto cripto = new Cripto(rsa);
             tempoInicial = System.currentTimeMillis();
@@ -43,14 +44,23 @@ public class Main {
             cripto.descriptografa();
             tempoFinal = System.currentTimeMillis();
             processoDeDescriptografia.add((float) ((tempoFinal - tempoInicial) / 1000d));
-            /*
+
             Fatoracao fatoracao = new Fatoracao();
             tempoInicial = System.currentTimeMillis();
             fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
             tempoFinal = System.currentTimeMillis();
-            processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));*/
-        }
-
+            processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
+        }*/
+        RSA rsa = new RSA(32);//gera chaves
+        Fatoracao fatoracao = new Fatoracao();
+        System.out.println("q: " + rsa.getQ() + " p: " + rsa.getP());
+        tempoInicial = System.currentTimeMillis();
+        BigInteger[] pq = fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
+        tempoFinal = System.currentTimeMillis();
+        System.out.println("q: " + pq[0] + "p: " + pq[1]);
+        System.out.println(((tempoFinal - tempoInicial) / 1000d));
+        //processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
+        /*
         //vetores python
         //geracao de chaves
         System.out.print("geracaoDeChaves = [");
@@ -70,7 +80,11 @@ public class Main {
             System.out.print(processoDeDescriptografia.get(i) + ", ");
         System.out.print("]\n");
 
-
+        System.out.print("tamanho da chave = [");
+        for(int i =64; i<=1024; i+=64)
+            System.out.print(i + ", ");
+        System.out.print("]\n");
+        */
         //fatoracao
         /*
         System.out.printf("processoDeFatoracao = [");

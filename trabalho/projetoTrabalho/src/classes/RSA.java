@@ -93,5 +93,11 @@ public class RSA {
         return d;
     }
 
+    public BigInteger getP() {
+        return p;
+    }
 
+    public BigInteger getQ() {
+        return q;
+    }
 }
