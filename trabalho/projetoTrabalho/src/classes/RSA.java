@@ -27,7 +27,7 @@ public class RSA {
         //define 2 provaveis primos aleatorios de tamanho TAMANHO_BIGINT
         this.p = primoBigInteger();
         this.q = primoBigInteger();
-        this.phi = define_phi(p, q);//define o valor de phi para p e q
+        this.phi = phi(p, q);//define o valor de phi para p e q
         //chave publica é definida por [n, e]
         this.n = p.multiply(q);//n é definido por n = pq
 
@@ -40,8 +40,8 @@ public class RSA {
         this.d  = e.modInverse(phi);// d é definido pelo inverso do mod de phi(n)
     }
 
-    //a função phi é definida por phi(pq) = (p-1)(q-1)
-    private BigInteger define_phi(BigInteger p, BigInteger q){
+    //phi(n) = (p-1)(q-1)
+    private BigInteger phi(BigInteger p, BigInteger q){
         return this.p.subtract(BigInteger.valueOf(1)).multiply(this.q.subtract(BigInteger.ONE));
     }
 
@@ -63,7 +63,7 @@ public class RSA {
         return stringBuilder.toString();
     }
 
-    private BigInteger primoBigInteger(){//gera um provavel primo do tipo BigInteger
+    private BigInteger primoBigInteger(){//gera um provavel primo do tipo BigInteger através do teste de miller rabin
         while (true){
             BigInteger primo = new BigInteger(TAMANHO_BIGINT, random);
             if(millerRabin.isProbablePrime(primo, 100)){

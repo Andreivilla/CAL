@@ -1,8 +1,4 @@
-import classes.Cripto;
-
-import classes.Fatoracao;
-import classes.ManipuladorArquivos;
-import classes.RSA;
+import classes.*;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -11,33 +7,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        /*gráficos com os tempos de execução da
-        geração das chaves,
-        da fatoração, do
-        processo de criptografia e
-        descriptografia da mensagem. O gráfico do processo
-        de criptografia deve incluir exemplos até 1024, os tempos devem ser medidos com
-        intervalos de chaves de 64 bits*/
-
-        ArrayList<Float> geracaoDeChaves = new ArrayList<>();
-        ArrayList<Float> processoDeCriptografia = new ArrayList<>();
+        TestesGraficos testesGraficos = new TestesGraficos(10);
+        testesGraficos.testar();
+/*
         ArrayList<Float> processoDeDescriptografia = new ArrayList<>();
         ArrayList<Float> processoDeFatoracao = new ArrayList<>();
         long tempoInicial = 0;
-        long tempoFinal = 0;
+        long tempoFinal = 0;*/
 
         /*for(int i=10;  i <= 30; i+=10){
-            //gerar chaves
-            //tempoInicial = System.currentTimeMillis();
-            RSA rsa = new RSA(i);
-            //tempoFinal = System.currentTimeMillis();
-            //geracaoDeChaves.add((float) ((tempoFinal - tempoInicial) / 1000d));
+            /
 
-            Cripto cripto = new Cripto(rsa);
-            tempoInicial = System.currentTimeMillis();
-            cripto.criptografa();
-            tempoFinal = System.currentTimeMillis();
+
             processoDeCriptografia.add((float) ((tempoFinal - tempoInicial) / 1000d));
 
             tempoInicial = System.currentTimeMillis();
@@ -51,14 +32,31 @@ public class Main {
             tempoFinal = System.currentTimeMillis();
             processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
         }*/
-        RSA rsa = new RSA(32);//gera chaves
+        /*ArrayList<Float> vet = new ArrayList<>();
+        for(int i=8; i<=36; i+=2 ){
+
+            RSA rsa = new RSA(i);
+            Fatoracao fatoracao = new Fatoracao();
+
+            tempoInicial = System.currentTimeMillis();
+            BigInteger[] pq = fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
+            tempoFinal = System.currentTimeMillis();
+            System.out.println("certo : p: " + rsa.getP() + " q: " + rsa.getQ());
+            System.out.println("pq achado : " + pq[0] + " | " + pq[1]);
+            System.out.println("i: " + i + " tempo: " + (tempoFinal - tempoInicial) / 1000d);
+
+            vet.add((float) ((tempoFinal - tempoInicial) / 1000d));
+        }*/
+
+        /*tempoInicial = System.currentTimeMillis();
+        RSA rsa = new RSA(12);
         Fatoracao fatoracao = new Fatoracao();
-        System.out.println("q: " + rsa.getQ() + " p: " + rsa.getP());
-        tempoInicial = System.currentTimeMillis();
+        System.out.println(rsa.getP() + " | " + rsa.getQ());
+
         BigInteger[] pq = fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
         tempoFinal = System.currentTimeMillis();
-        System.out.println("q: " + pq[0] + "p: " + pq[1]);
-        System.out.println(((tempoFinal - tempoInicial) / 1000d));
+        System.out.print((tempoFinal - tempoInicial) / 1000d);*/
+
         //processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
         /*
         //vetores python

@@ -29,7 +29,7 @@ public class MillerRabin {
                 if (x.equals(n.subtract(BigInteger.valueOf(1))))
                     break;
             }
-            if (r == s) // None of the steps made x equal n-1.
+            if (r == s)
                 return false;
         }
         return true;
