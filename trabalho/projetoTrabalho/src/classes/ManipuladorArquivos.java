@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ManipuladorArquivos {
     public void salvarCifrada(BigInteger[] caracteres) throws IOException {
         try {
-            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"); // nome do arquivo que será escrito
+            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\mensagem.txt"); // nome do arquivo que será escrito
             Writer wr = new OutputStreamWriter(os); // criação de um escritor
             BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
 
@@ -25,7 +25,7 @@ public class ManipuladorArquivos {
 
     public void salvarDecifrada(String mensagem){
         try {
-            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"); // nome do arquivo que será escrito
+            OutputStream os = new FileOutputStream(System.getProperty("user.dir") + "\\src\\arquivos\\mensagem.txt"); // nome do arquivo que será escrito
             Writer wr = new OutputStreamWriter(os); // criação de um escritor
             BufferedWriter br = new BufferedWriter(wr); // adiciono a um escritor de buffer
 
@@ -39,7 +39,7 @@ public class ManipuladorArquivos {
     public String lerDecifrada(){
         Scanner sc;
         try {
-            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"));
+            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\mensagem.txt"));
         } catch (FileNotFoundException e) {
             sc = new Scanner(System.in);
         }
@@ -57,7 +57,7 @@ public class ManipuladorArquivos {
     public BigInteger[] lerCifrada(){
         Scanner sc;
         try {
-            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\menssagem.txt"));
+            sc = new Scanner(new File(System.getProperty("user.dir") + "\\src\\arquivos\\mensagem.txt"));
         } catch (FileNotFoundException e) {
             sc = new Scanner(System.in);
         }

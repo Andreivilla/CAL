@@ -32,7 +32,7 @@ public class RSA {
         this.n = p.multiply(q);//n é definido por n = pq
 
         while(true){
-            this.e = BigIntegerInRange(n);
+            this.e = BigIntegerInRange(n);//
             if(mdc.mdcSimples(e, n).equals(BigInteger.valueOf(1))){
                 break;
             }

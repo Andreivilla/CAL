@@ -61,8 +61,6 @@ public class TestesGraficos {
         }
 
 
-
-
         System.out.print("geracaoDeChaves = ");
         printaTeste(geracaoDeChaves);
         System.out.println();

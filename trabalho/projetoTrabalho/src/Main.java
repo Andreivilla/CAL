@@ -7,99 +7,48 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        /*Scanner sc = new Scanner(System.in);
+        RSA rsa = new RSA(256);
+        Cripto cripto = new Cripto(rsa);
+
+        Integer op = -1;
+        while (true) {
+            System.out.println("1- Criptografa");
+            System.out.println("2- Descriptografa");
+            System.out.println("3- Mostrar componentes RSA");
+            System.out.println("0- fechar programa");
+
+            op = sc.nextInt();
+            switch (op) {
+                case 1:
+                    cripto.criptografa();
+                    System.out.println("Arquivo criptografado");
+                    break;
+                case 2:
+                    cripto.descriptografa();
+                    System.out.println("Arquivo Descriptografado");
+                    break;
+                case 3:
+                    System.out.println("n: " + rsa.getChavePublica()[0]);
+                    System.out.println("e: " + rsa.getChavePublica()[1]);
+                    System.out.println("d: " + rsa.getChavePrivada());
+                    System.out.println("q: " + rsa.getQ());
+                    System.out.println("p: " + rsa.getP());
+                    break;
+                case 0:
+                    System.out.println("programa encerrado");
+                    return;
+                default:
+                    System.out.println("opção invalida");
+            }
+        }*/
+
+
+
         TestesGraficos testesGraficos = new TestesGraficos(10);
-        testesGraficos.testar();
-/*
-        ArrayList<Float> processoDeDescriptografia = new ArrayList<>();
-        ArrayList<Float> processoDeFatoracao = new ArrayList<>();
-        long tempoInicial = 0;
-        long tempoFinal = 0;*/
-
-        /*for(int i=10;  i <= 30; i+=10){
-            /
-
-
-            processoDeCriptografia.add((float) ((tempoFinal - tempoInicial) / 1000d));
-
-            tempoInicial = System.currentTimeMillis();
-            cripto.descriptografa();
-            tempoFinal = System.currentTimeMillis();
-            processoDeDescriptografia.add((float) ((tempoFinal - tempoInicial) / 1000d));
-
-            Fatoracao fatoracao = new Fatoracao();
-            tempoInicial = System.currentTimeMillis();
-            fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
-            tempoFinal = System.currentTimeMillis();
-            processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
-        }*/
-        /*ArrayList<Float> vet = new ArrayList<>();
-        for(int i=8; i<=36; i+=2 ){
-
-            RSA rsa = new RSA(i);
-            Fatoracao fatoracao = new Fatoracao();
-
-            tempoInicial = System.currentTimeMillis();
-            BigInteger[] pq = fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
-            tempoFinal = System.currentTimeMillis();
-            System.out.println("certo : p: " + rsa.getP() + " q: " + rsa.getQ());
-            System.out.println("pq achado : " + pq[0] + " | " + pq[1]);
-            System.out.println("i: " + i + " tempo: " + (tempoFinal - tempoInicial) / 1000d);
-
-            vet.add((float) ((tempoFinal - tempoInicial) / 1000d));
-        }*/
-
-        /*tempoInicial = System.currentTimeMillis();
-        RSA rsa = new RSA(12);
-        Fatoracao fatoracao = new Fatoracao();
-        System.out.println(rsa.getP() + " | " + rsa.getQ());
-
-        BigInteger[] pq = fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
-        tempoFinal = System.currentTimeMillis();
-        System.out.print((tempoFinal - tempoInicial) / 1000d);*/
-
-        //processoDeFatoracao.add((float) ((tempoFinal - tempoInicial) / 1000d));
-        /*
-        //vetores python
-        //geracao de chaves
-        System.out.print("geracaoDeChaves = [");
-        for(int i=0; i<geracaoDeChaves.size(); i++)
-            System.out.print(geracaoDeChaves.get(i) + ", ");
-        System.out.print("]\n");
-
-        //processo de Criptografia
-        System.out.print("processoDeCriptografia = [");
-        for(int i=0; i<processoDeCriptografia.size(); i++)
-            System.out.print( processoDeCriptografia.get(i) + ", ");
-        System.out.print("]\n");
-
-        //processo de Descriptografia
-        System.out.print("processoDeDescriptografia = [");
-        for(int i=0; i<processoDeDescriptografia.size(); i++)
-            System.out.print(processoDeDescriptografia.get(i) + ", ");
-        System.out.print("]\n");
-
-        System.out.print("tamanho da chave = [");
-        for(int i =64; i<=1024; i+=64)
-            System.out.print(i + ", ");
-        System.out.print("]\n");
-        */
-        //fatoracao
-        /*
-        System.out.printf("processoDeFatoracao = [");
-        for(int i=0; i<processoDeFatoracao.size(); i++)
-            System.out.printf("%.f, ", processoDeFatoracao.get(i));
-        System.out.printf("]\n");*/
-
-
-        /*System.out.println("Precione enter para continuar");
-        {
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
-        }*/
-
-
-
-        //System.out.printf("%.3f ms%n", (tempoFinal - tempoInicial) / 1000d);
+        //testesGraficos.testar();
+        testesGraficos.testarFatoracao();
+        /*RSA rsa = new RSA(32);*/
     }
 
 }
