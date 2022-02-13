@@ -3,6 +3,7 @@ package classes;
 import java.math.BigInteger;
 
 public class Fatoracao {
+
     public BigInteger[] fatoracaoPQ(BigInteger n){
         BigInteger[] fatores = new BigInteger[2];
         BigInteger fator = new BigInteger("3");

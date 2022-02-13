@@ -1,13 +1,11 @@
 import classes.*;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         RSA rsa = new RSA(256);
         Cripto cripto = new Cripto(rsa);
 
@@ -41,13 +39,13 @@ public class Main {
                 default:
                     System.out.println("opção invalida");
             }
-        }*/
+        }
 
 
-
-        TestesGraficos testesGraficos = new TestesGraficos(10);
+        //codigos usados em testes
+        //TestesGraficos testesGraficos = new TestesGraficos(10);
         //testesGraficos.testar();
-        testesGraficos.testarFatoracao();
+        //testesGraficos.testarFatoracao();
         /*RSA rsa = new RSA(32);*/
     }
 

@@ -85,15 +85,17 @@ public class TestesGraficos {
         ArrayList<Float> retorno = allocaArrayZero(32/2);
         for (int i=0; i<NUMERO_DE_TESTES; i++){
             ArrayList<Float> aux = new ArrayList<>();
-            for(int j=2; j<=32; j+=2) {
+            for(int j=8; j<=32; j+=2) {
                 //gerar chaves
                 RSA rsa = new RSA(j);
-                Fatoracao fatoracao = new Fatoracao();
                 long tempoInicial = System.currentTimeMillis();
-                fatoracao.fatoracaoPQ(rsa.getChavePublica()[0]);
+                new Fatoracao().fatoracaoPQ(rsa.getChavePublica()[0]);
                 long tempoFinal = System.currentTimeMillis();
+                System.out.println("J: " + j + " aux: " + (tempoFinal - tempoInicial) / 1000d);
                 aux.add((float) ((tempoFinal - tempoInicial) / 1000d));
             }
+            System.out.print("aux: ");
+            printaTeste(aux);
             retorno = somaArrays(retorno, aux);
         }
 

@@ -27,17 +27,17 @@ public class RSA {
         //define 2 provaveis primos aleatorios de tamanho TAMANHO_BIGINT
         this.p = primoBigInteger();
         this.q = primoBigInteger();
-        this.phi = phi(p, q);//define o valor de phi para p e q
-        //chave publica é definida por [n, e]
         this.n = p.multiply(q);//n é definido por n = pq
+        this.phi = phi(p, q);//define o valor de phi para p e q
 
-        while(true){
-            this.e = BigIntegerInRange(n);//
-            if(mdc.mdcSimples(e, n).equals(BigInteger.valueOf(1))){
+        while(true){// repete até encotrar um co primo de n
+            this.e = BigIntegerInRange(phi);//gera um primo menor que n
+            if(mdc.mdcSimples(e, phi).equals(BigInteger.valueOf(1))){// verifica coprimaridade
                 break;
             }
         }
-        this.d  = e.modInverse(phi);// d é definido pelo inverso do mod de phi(n)
+
+        this.d  = e.modInverse(phi);// d = (2phi(n) + 1)/e
     }
 
     //phi(n) = (p-1)(q-1)
